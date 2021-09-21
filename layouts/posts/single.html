@@ -65,7 +65,7 @@
     {{- $image := $params.featuredimage -}}
     {{- $pageImageHidden := $params.hiddenFeaturedImage -}}
     {{- with .Resources.GetMatch "featured-image" -}}
-    {{- $image = .Permalink -}}
+    {{- $image = (.Fill "780x232 Smart webp q75").RelPermalink -}}
     {{- end -}}
 
     {{- $authorName := $params.author | default .Site.Author.name | default " " -}}
@@ -86,11 +86,7 @@
 
             {{- $heroImage := "" -}}
             {{- with .Resources.GetMatch "featured-image" -}}
-            {{- if lt 1600 .Width -}}
-            {{- $heroImage = (.Resize "1600x q100").Permalink -}}
-            {{- else -}}
-            {{- $heroImage = .Permalink -}}
-            {{- end -}}
+            {{- $heroImage = (.Fill "780x232 Smart webp q75").Permalink -}}
             {{- end -}}
 
             <div class="post-hero-grid">
@@ -157,11 +153,7 @@
             {{- $fullImage := $image -}}
             {{- if eq $pageTheme "full" -}}
             {{- with $.Resources.GetMatch "featured-image" -}}
-            {{- if lt 1600 .Width -}}
-                {{- $fullImage = (.Resize "1600x q100").Permalink -}}
-            {{- else -}}
-                {{- $fullImage = .Permalink -}}
-            {{- end -}}
+            {{- $fullImage = (.Fill "780x232 Smart webp q75").Permalink -}}
             {{- end -}}
             {{- end -}}
 

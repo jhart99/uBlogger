@@ -9,7 +9,7 @@
             {{- if not $params.summaryStyle.hiddenImage -}}
             {{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
             {{- with .Resources.GetMatch "featured-image" -}}
-                {{- $image = (.Fill "796x238 Center q90").RelPermalink -}}
+                {{- $image = (.Fill "796x238 Smart webp q75").RelPermalink -}}
             {{- end -}}
             {{- with .Resources.GetMatch "featured-image-preview" -}}
                 {{- $image = (.Fill "796x238 Center q90").RelPermalink -}}
@@ -26,7 +26,7 @@
                     </div>
                     {{- end -}}
                     {{- end -}}
-                    <a href="{{ $.RelPermalink }}" target="_blank">
+                    <a href="{{ $.RelPermalink }}" >
                         {{- dict "Src" . "Title" $.Description "Resources" $.Resources "Alt" $.Title "Height" 798 "Width" 238 | partial "plugin/image.html" -}}
                     </a>
                 </div>
@@ -36,7 +36,7 @@
             <div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;">
                 {{- /* Title */ -}}
                 <h2 class="summary-title" itemprop="name headline">
-                    <a href="{{ $.RelPermalink }}" target="_blank">{{ .Title }}</a>
+                    <a href="{{ $.RelPermalink }}" >{{ .Title }}</a>
                 </h2>
 
                 {{- if not $params.summaryStyle.hiddenMeta -}}
@@ -131,4 +131,3 @@
         {{- end -}}
     </div>
 </article>
-
